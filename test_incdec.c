@@ -20,7 +20,18 @@ increase(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that increments *data by 1 using
          * non-atomic increment instructions. See lab2_asm.h.
          */
-         asm_inc_int32(data);
+         
+            for (int i = 0; i < iterations; i++) {
+
+                int a;
+                enter_critical(thread);
+                /* TASK: Use enter_critical(thread) and
+                 * exit_critical(thread) to define a critical section
+                 * around the code that needs to execute atomically.
+                 */
+                asm_inc_int32(data);
+                exit_critical(thread);
+        }
 }
 
 static void
@@ -29,7 +40,18 @@ decrease(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that decrements *data by 1 using
          * non-atomic decrement instructions. See lab2_asm.h.
          */
-         asm_dec_int32(data);
+         
+                  for (int i = 0; i < iterations; i++) {
+
+                int a;
+                enter_critical(thread);
+                /* TASK: Use enter_critical(thread) and
+                 * exit_critical(thread) to define a critical section
+                 * around the code that needs to execute atomically.
+                 */
+                asm_dec_int32(data);
+                exit_critical(thread);
+        }
 }
 
 
@@ -39,7 +61,18 @@ increase_atomic(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that increments *data by 1 using
          * atomic increment instructions. See lab2_asm.h.
          */
-         asm_atomic_inc_int32(data);
+         
+         for (int i = 0; i < iterations; i++) {
+
+                int a;
+                enter_critical(thread);
+                /* TASK: Use enter_critical(thread) and
+                 * exit_critical(thread) to define a critical section
+                 * around the code that needs to execute atomically.
+                 */
+                asm_atomic_inc_int32(data);
+                exit_critical(thread);
+        }
 }
 
 static void
@@ -48,7 +81,18 @@ decrease_atomic(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that decrements *data by 1 using
          * atomic decrement instructions. See lab2_asm.h.
          */
-         asm_atomic_dec_int32(data);
+         
+         for (int i = 0; i < iterations; i++) {
+
+                int a;
+                enter_critical(thread);
+                /* TASK: Use enter_critical(thread) and
+                 * exit_critical(thread) to define a critical section
+                 * around the code that needs to execute atomically.
+                 */
+                asm_atomic_dec_int32(data);
+                exit_critical(thread);
+        }
 }
 
 test_impl_t test_impl_incdec_atomic = {
