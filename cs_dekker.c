@@ -43,6 +43,7 @@ impl_enter_critical(int thread)
          while(flag[!thread]){
          	if (turn!=thread)
          	{
+         		MFENCE();
          		flag[thread]=0;
          		while(turn != thread){
          		}
