@@ -23,7 +23,7 @@ increase(int thread, int iterations, volatile int *data)
          
             for (int i = 0; i < iterations; i++) {
 
-                int a;
+              
                 enter_critical(thread);
                 asm_inc_int32((int32_t*)data);
                 exit_critical(thread);
