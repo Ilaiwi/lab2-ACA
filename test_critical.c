@@ -19,8 +19,9 @@ static void
 increase(int thread, int iterations, volatile int *data)
 {
         for (int i = 0; i < iterations; i++) {
-        	
+
                 int a;
+                enter_critical(thread);
                 /* TASK: Use enter_critical(thread) and
                  * exit_critical(thread) to define a critical section
                  * around the code that needs to execute atomically.
@@ -28,6 +29,7 @@ increase(int thread, int iterations, volatile int *data)
                 a = *data;
                 a++;
                 *data = a;
+                exit_critical(thread);
         }
 }
 
@@ -40,6 +42,7 @@ decrease(int thread, int iterations, volatile int *data)
 {
         for (int i = 0; i < iterations; i++) {
                 int a;
+                enter_critical(thread);
                 /* TASK: Use enter_critical(thread) and
                  * exit_critical(thread) to define a critical section
                  * around the code that needs to execute atomically.
@@ -47,6 +50,7 @@ decrease(int thread, int iterations, volatile int *data)
                 a = *data;
                 a--;
                 *data = a;
+                exit_critical(thread);
         }
 }
 
