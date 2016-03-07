@@ -70,7 +70,7 @@ impl_exit_critical(int thread)
         
         /* TASK: Implement exit code for Dekker's algorithm here */
         turn=!thread;
-        MFENCE();
+        
         flag[thread]=0;
 }
 
