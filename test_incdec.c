@@ -22,8 +22,6 @@ increase(int thread, int iterations, volatile int *data)
          */
          
             for (int i = 0; i < iterations; i++) {
-
-              
                 enter_critical(thread);
                 asm_inc_int32((int32_t*)data);
                 exit_critical(thread);
@@ -68,8 +66,7 @@ decrease_atomic(int thread, int iterations, volatile int *data)
          * atomic decrement instructions. See lab2_asm.h.
          */
          
-         for (int i = 0; i < iterations; i++) {
-
+        for (int i = 0; i < iterations; i++) {
                 enter_critical(thread);
                 asm_atomic_dec_int32((int32_t*)data);
                 exit_critical(thread);
