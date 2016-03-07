@@ -39,7 +39,21 @@ impl_enter_critical(int thread)
          * other thread. */
 
         /* TASK: Implement entry code for Dekker's algorithm here */
+         flag[thread]=true;
+         while(flag[!thread]){
+         	if (turn!=thread)
+         	{
+         		flag[thread]=false;
+         		while(turn != thread){
+         		}
+         		flag[thread]=true;
+         	}
+         }
+
+
+         
 }
+
 
 /**
  * Exit from a critical section.
@@ -50,8 +64,10 @@ static void
 impl_exit_critical(int thread)
 {
         assert(thread == 0 || thread == 1);
-
+        
         /* TASK: Implement exit code for Dekker's algorithm here */
+        turn=!thread;
+        flag[thread]=false;
 }
 
 
