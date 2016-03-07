@@ -25,11 +25,7 @@ increase(int thread, int iterations, volatile int *data)
 
                 int a;
                 enter_critical(thread);
-                /* TASK: Use enter_critical(thread) and
-                 * exit_critical(thread) to define a critical section
-                 * around the code that needs to execute atomically.
-                 */
-                asm_inc_int32(data);
+                asm_inc_int32((int32_t*)data);
                 exit_critical(thread);
         }
 }
@@ -41,15 +37,10 @@ decrease(int thread, int iterations, volatile int *data)
          * non-atomic decrement instructions. See lab2_asm.h.
          */
          
-                  for (int i = 0; i < iterations; i++) {
+        for (int i = 0; i < iterations; i++) {
 
-                int a;
                 enter_critical(thread);
-                /* TASK: Use enter_critical(thread) and
-                 * exit_critical(thread) to define a critical section
-                 * around the code that needs to execute atomically.
-                 */
-                asm_dec_int32(data);
+                asm_dec_int32((int32_t*)data);
                 exit_critical(thread);
         }
 }
@@ -64,13 +55,8 @@ increase_atomic(int thread, int iterations, volatile int *data)
          
          for (int i = 0; i < iterations; i++) {
 
-                int a;
                 enter_critical(thread);
-                /* TASK: Use enter_critical(thread) and
-                 * exit_critical(thread) to define a critical section
-                 * around the code that needs to execute atomically.
-                 */
-                asm_atomic_inc_int32(data);
+                asm_atomic_inc_int32((int32_t*)data);
                 exit_critical(thread);
         }
 }
@@ -84,13 +70,8 @@ decrease_atomic(int thread, int iterations, volatile int *data)
          
          for (int i = 0; i < iterations; i++) {
 
-                int a;
                 enter_critical(thread);
-                /* TASK: Use enter_critical(thread) and
-                 * exit_critical(thread) to define a critical section
-                 * around the code that needs to execute atomically.
-                 */
-                asm_atomic_dec_int32(data);
+                asm_atomic_dec_int32((int32_t*)data);
                 exit_critical(thread);
         }
 }
