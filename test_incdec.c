@@ -20,6 +20,7 @@ increase(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that increments *data by 1 using
          * non-atomic increment instructions. See lab2_asm.h.
          */
+         asm_inc_int32(data);
 }
 
 static void
@@ -28,6 +29,7 @@ decrease(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that decrements *data by 1 using
          * non-atomic decrement instructions. See lab2_asm.h.
          */
+         asm_dec_int32(data);
 }
 
 
@@ -37,6 +39,7 @@ increase_atomic(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that increments *data by 1 using
          * atomic increment instructions. See lab2_asm.h.
          */
+         asm_atomic_inc_int32(data);
 }
 
 static void
@@ -45,6 +48,7 @@ decrease_atomic(int thread, int iterations, volatile int *data)
         /* TASK: Implement a loop that decrements *data by 1 using
          * atomic decrement instructions. See lab2_asm.h.
          */
+         asm_atomic_dec_int32(data);
 }
 
 test_impl_t test_impl_incdec_atomic = {
